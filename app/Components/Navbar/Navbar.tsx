@@ -6,10 +6,14 @@ import { useRouter } from 'next/navigation';
 import React from 'react'
 import ThemeDropdown from '../ThemeDropdown/ThemeDropdown';
 import SearchInput from '../SearchDialog/SearchDialog';
+import { useGlobalContext } from '@/app/Context/globalContext';
 
 export default function Navbar() {
 
   const router = useRouter();
+
+  const { state } = useGlobalContext();
+  
 
   return (
     // Implementación de la navegación con atributos tailwind para los estilos

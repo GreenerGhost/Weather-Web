@@ -13,28 +13,31 @@ import React from 'react'
 export default function SearchDialog() {
   return (
     <div className='search-button'>
+      { /* Esta sección será para poder realizar búsquedas en la API para posteriormente mostrar la información en pantalla */}
       <Dialog>
-      <DialogTrigger asChild>
-        <Button
-          variant="outline"
-          className="border inline-flex items-center justify-center text-sm font-medium hover:dark:bg-[#131313] hover:bg-slate-100  ease-in-out duration-200"
-        >
-          <p className="text-sm text-muted-foreground">Buscar aquí...</p>
-          <div className="command dark:bg-[#262626] bg-slate-200  py-[2px] pl-[5px] pr-[7px] rounded-sm ml-[10rem] flex items-center gap-2">
-            {commandIcon}
-            <span className="text-[9px]">F</span>
-          </div>
-        </Button>
-      </DialogTrigger>
+        <DialogTrigger asChild>
+          <Button
+            variant="outline"
+            className="border inline-flex items-center justify-center text-sm font-medium hover:dark:bg-[#131313] hover:bg-slate-100  ease-in-out duration-200"
+          >
+            <p className="text-sm text-muted-foreground">Buscar aquí...</p>
+            <div className="command dark:bg-[#262626] bg-slate-200  py-[2px] pl-[5px] pr-[7px] rounded-sm ml-[10rem] flex items-center gap-2">
+              {commandIcon}
+              <span className="text-[9px]">F</span>
+            </div>
+          </Button>
+        </DialogTrigger>
 
-      <DialogContent className="p-0">
-        <Command className="rounded-lg border shadow-md">
-          <CommandInput placeholder="Escribe un comando o búsqueda..."/>
-          <ul className="px-3 pb-2">
-            <p className="p-2 text-sm text-muted-foreground">Sugerencias</p>
-          </ul>
-        </Command>
-      </DialogContent>
+        { /* Esta sección mostrará un contenido de dialogo como si fuera una sección que se sobrepone al resto de la página, con el fin de escribir la búsqueda de una ciudad deseada */ }
+        <DialogContent className="p-0">
+          <Command className="rounded-lg border shadow-md">
+            <CommandInput placeholder="Escribe tu búsqueda..."/>
+            { /* Se utilizará para desplegar una lista de posibles sugerencias de ciudades dadas por defecto */}
+            <ul className="px-3 pb-2">
+              <p className="p-2 text-sm text-muted-foreground">Sugerencias</p>
+            </ul>
+          </Command>
+        </DialogContent>
       </Dialog>
     </div>
   )

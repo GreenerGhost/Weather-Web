@@ -1,41 +1,60 @@
 import {
   Command,
   Github,
+  UsersRound,
   Search,
-  CloudDrizzle,
-  CloudRain,
-  Snowflake,
-  CloudSun,
-  Cloudy,
   Navigation,
   ThermometerSun,
-  Sunset,
-  Wind,
-  Gauge,
-  Droplets,
   Thermometer,
-  Eye,
-  UsersRound,
+  Gauge,
   CalendarDays,
-  SunDim,
+  Eye,
+  Droplets,
+  CloudDrizzle,
+  CloudRain,
+  CloudRainWind,
+  CloudSnow,
+  CloudSun,
+  Cloudy,
+  Cloud,
+  Sunset,
+  Sunrise,
+  Wind,
+  Sun,
+  CloudLightningIcon,
+  Haze,
+  Waves,
+  Moon,
+  CloudMoon,
+  CloudMoonRain,
 } from 'lucide-react'
 
 export const commandIcon = <Command size={14} />
 export const github = <Github size={20} />
 export const searchIcon = <Search />
-export const drizzleIcon = <CloudDrizzle size={25} />
-export const rain = <CloudRain size={30} />
-export const snow = <Snowflake size={30} />
-export const clearSky = <CloudSun size={30} />
-export const cloudy = <Cloudy size={30} />
 export const navigation = <Navigation size={15} />
 export const thermo = <ThermometerSun size={15} />
-export const sunset = <Sunset size={15} />
-export const wind = <Wind size={15} />
 export const gauge = <Gauge size={15} />
-export const droplets = <Droplets size={15} />
 export const thermometer = <Thermometer size={15} />
 export const eye = <Eye size={15} />
 export const people = <UsersRound size={15} />
 export const calender = <CalendarDays size={15} />
-export const sun = <SunDim size={15} />
+
+export const droplets = <Droplets size={15} />
+export const drizzle = <CloudDrizzle size={25} />
+export const rain = <CloudRain size={30} />
+export const snow = <CloudSnow size={30} />
+export const cloudSun = <CloudSun size={30} />
+export const cloud = <Cloud size={30} />
+export const cloudy = <Cloudy size={30} />
+export const sunset = <Sunset size={15} />
+export const wind = <Wind size={15} />
+export const cloudRainWind = <CloudRainWind size={15} />
+export const sun = <Sun size={15} />
+export const sunrise = <Sunrise size={15} />
+export const cloudLightning= <CloudLightningIcon size={15} />
+export const mist = <Waves size={15} />
+export const haze = <Haze size={15} />
+export const moon = <Moon size={15} />
+export const cloudMoon = <CloudMoon size={15} />
+export const cloudMoonRain = <CloudMoonRain size={15} />

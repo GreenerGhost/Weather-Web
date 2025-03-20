@@ -16,6 +16,9 @@ export const GlobalContextProvider = ( { children } ) => {
     try {
       // permite hacer una petición al archivo Route.ts si es exitosa se guarda en setForecast
       const res = await axios.get("api/Weather");      
+
+      console.log(res);
+      
       
       setForecast(res.data);
     } catch (error) {
@@ -26,9 +29,7 @@ export const GlobalContextProvider = ( { children } ) => {
 
 
   useEffect(() => {
-    fetchForecast()
-    .then(data => setForecast(data))
-    .catch(error => console.log(error))
+    fetchForecast();
   }, []);
 
   return (

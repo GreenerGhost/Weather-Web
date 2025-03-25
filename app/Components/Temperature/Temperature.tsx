@@ -2,7 +2,8 @@
 import { useGlobalContext } from '@/app/Context/globalContext';
 import { kelvinToCelsius } from '@/app/Utils/convert';
 import { cloud, cloudLightning, cloudMoon, cloudMoonRain, cloudSun, cloudy, drizzle, mist, moon, navigation, rain, snow, sun } from '@/app/Utils/Icons';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import moment from 'moment';
 
 export default function Temperature() {
 
@@ -56,15 +57,47 @@ export default function Temperature() {
 
   // Se obtiene la opción obtenida por el listado de códigos o la opción por defecto
   const getIcon = (weatherCode: string) => {
-    return weatherCodeOptions[weatherCode] || weatherCodeDefault;
+    // Ajuste para poder utilizar el tipo string en el objeto weatherCodeOptions
+    return weatherCodeOptions[weatherCode as keyof typeof weatherCodeOptions] || weatherCodeDefault;
   }
 
   // se le añade una w al inicio del icono obtenido puesto que el código del icono obtenido inicia por un número, de esta forma evitamos fallas
   const weatherCode = `w${weatherIcon}`;
 
+  // Actualización en tiempo real
+  useEffect(() => {
+
+    // Obtención de días en español, puesto que el formato obtenido en timezone se encuentra en inglés
+    const  days = {
+      Sunday: "Domingo", 
+      Monday: "Lunes", 
+      Tuesday: "Martes", 
+      Wednesday: "Miércoles", 
+      Thursday: "Jueves", 
+      Friday: "Viernes", 
+      Saturday: "Sábado"
+    };
+
+    // Actualización cada segundo
+    const interval = setInterval(() => {
+      const localMoment = moment().utcOffset(timezone / 60);
+      // Formato personalizado de 24 horas
+      const formattedTime = localMoment.format("HH:mm:ss");
+      const day = localMoment.format("dddd");
+      console.log(localMoment);
+      
+
+      setLocalTime(formattedTime);
+
+      // Ajuste para que pueda tomar el tipo string como llave del objeto que usamos para mostrar el día en español
+      setCurrentDay(days[day as keyof typeof days]);
+    }, 1000);
+  }, []);
+
+
   // Si hay información se mostrarán los datos en pantalla transformados para poder visualizarlos
   return (
-    <div className='pt-6 pb-5 border rounded-lg flex flex-col justify-between dark:bg-dark-gray shadow-sm dark:shadow-none'>
+    <div className='pt-6 pb-5 px-4 border rounded-lg flex flex-col justify-between dark:bg-dark-gray shadow-sm dark:shadow-none'>
       <p className="flex justify-between items-center">
         <span className="font-medium">{ currentDay }</span>
         <span className="font-medium">{ localTime }</span>

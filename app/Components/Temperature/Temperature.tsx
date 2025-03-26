@@ -1,7 +1,19 @@
 "use client";
 import { useGlobalContext } from '@/app/Context/globalContext';
 import { kelvinToCelsius } from '@/app/Utils/convert';
-import { cloud, cloudLightning, cloudMoon, cloudMoonRain, cloudSun, cloudy, drizzle, mist, moon, navigation, rain, snow, sun } from '@/app/Utils/Icons';
+import { cloud, 
+  cloudLightning, 
+  cloudMoon, 
+  cloudMoonRain, 
+  cloudSun, 
+  cloudy, 
+  drizzle, 
+  mist, 
+  moon, 
+  navigation, 
+  rain, 
+  snow, 
+  sun } from '@/app/Utils/Icons';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 
@@ -78,14 +90,12 @@ export default function Temperature() {
       Saturday: "Sábado"
     };
 
-    // Actualización cada segundo
+    // Actualización cada segundo, al completar un ciclo se vuelve a realizar el proceso y se actualiza el tiempo
     const interval = setInterval(() => {
       const localMoment = moment().utcOffset(timezone / 60);
       // Formato personalizado de 24 horas
       const formattedTime = localMoment.format("HH:mm:ss");
       const day = localMoment.format("dddd");
-      console.log(localMoment);
-      
 
       setLocalTime(formattedTime);
 
@@ -113,7 +123,7 @@ export default function Temperature() {
           <span>{ getIcon(weatherCode) }</span>
           <p className='pt-2 capitalize text-lg font-medium'>{ description }</p>
         </div>
-        <p>
+        <p className='flex items-center gap-2'>
           <span>Min. Temp: { minTemp }°</span>
           <span>Máx. Temp: { maxTemp }°</span>
         </p>

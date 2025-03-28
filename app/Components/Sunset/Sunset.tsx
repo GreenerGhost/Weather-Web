@@ -24,15 +24,15 @@ export default function Sunset() {
   const sunriseTime = unixToTime(forecast?.sys?.sunrise, forecast?.timezone);
 
   return (
-    <div className='pt-6 px-4 h-[12rem] border rounded-lg flex flex-col gap-8 dark:bg-dark-gray shadow-sm dark:shadow-none'>
+    <div className='pt-5 px-4 h-[12rem] border rounded-lg flex flex-col gap-3 sm:gap-6 dark:bg-dark-gray shadow-sm dark:shadow-none'>
       <div className="top">
         <h2 className='flex items-center gap-2 font-medium'>
           { sunset } Atardecer
         </h2>
-        <p className='pt-4 text-2xl'>{ sunsetTime }</p>
+        <p className='pt-4 text-6xl text-center sm:text-5xl sm:pt-6'>{ sunsetTime }</p>
       </div>
 
-      <p>Amanecer: { sunriseTime }</p>
+      <p className='text-center'>Amanecer: { sunriseTime }</p>
     </div>
   )
 }

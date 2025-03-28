@@ -22,7 +22,7 @@ export default function Wind() {
   }
 
   return (
-    <div className='pt-6 pb-5 px-4 h-[12rem] border rounded-lg flex flex-col gap-3 dark:bg-dark-gray shadow-sm dark:shadow-none'>
+    <div className='pt-5 pb-5 px-4 h-[12rem] border rounded-lg flex flex-col gap-3 dark:bg-dark-gray shadow-sm dark:shadow-none'>
       <h2 className='flex items-center gap-2 font-medium'>
         { wind } Viento
       </h2>
@@ -39,7 +39,7 @@ export default function Wind() {
             alt="compass"
             width={ 11 }
             height={ 11 }
-            className='absolute top-0 left-[50%] transition-all duration-500 ease-in-out dark:invert'
+            className='absolute top-0 left-[50%] translate-x-[-50%] transition-all duration-500 ease-in-out dark:invert'
             style={{
               transform: `rotate(${windDirection}deg) translateX(50%)`,
               height: "100%",

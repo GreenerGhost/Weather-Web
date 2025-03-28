@@ -30,7 +30,7 @@ export default function Navbar() {
           { /*Componente de shadcn, es un botón que permite redireccionar o realizar acciones dependiendo su configuración*/ }
           <Button 
             className='source-code flex items-center gap-2'
-            onClick={ () => { router.push("https://github.com")} }
+            onClick={ () => { router.push("https://github.com/GreenerGhost/Weather-Web")} }
           >{ github } Código fuente</Button>
         </div>
         

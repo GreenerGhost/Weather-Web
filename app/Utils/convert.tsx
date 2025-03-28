@@ -13,6 +13,7 @@ import {
   snow,
   sun 
 } from '@/app/Utils/Icons';
+import moment from 'moment';
 
 // Esta es una función para poder transformar los grados Kelvin que regresa la API a grados Celsius para poder mostrarlos en algún componente
 export const kelvinToCelsius = (kelvin: number) => {
@@ -93,3 +94,12 @@ export const airQualityIndexText = [
     description: "Muy mala"
   }
 ];
+
+
+// Función que convierte a formato HH:mm dado el tiempo y la zona horaria, con la función moment().unix() recupera el recuento de segundos desde la época Unix, que sirve como punto de referencia para indicar un momento especifico
+export const unixToTime = (unix: number, timezone: number) => {
+  return moment
+    .unix(unix)
+    .utcOffset(timezone / 60)
+    .format("HH:mm");
+}

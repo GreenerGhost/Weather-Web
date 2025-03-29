@@ -14,8 +14,8 @@ export async function GET(req: NextRequest) {
     //* Para realizar prueba unitaria se deben sustituir los valores sin las llaves
     const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
+    // Realización de la petición a la API y obtención del resultado en formato JSON
     const res = await axios.get(url);
-
     return NextResponse.json(res.data);
 
   } catch (error) {

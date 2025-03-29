@@ -1,27 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
+import { revalidatePath } from "next/cache";
 
 export async function GET(req: NextRequest) {
   try {
-
     // Obtener la API Key de OpenWeatherMap que se encuentra en el documento .env, también se puede sustituir por una apiKey personal
     const apiKey = process.env.OPENWEATHERMAP_API_KEY; 
-
+    
     // Valores de prueba 
     const lat = -33.3551;
     const lon = -70.7443;
-
-    // URL de la API de OpenWeatherMap para obtener los datos del clima
-    //* Para realizar prueba unitaria se deben sustituir los valores sin las llaves, el dato "lang=es" regresa los valores de description en español, si no se utiliza se obtiene en inglés
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&lang=es`;
-
-    // Realización de la petición a la API y obtención del resultado en formato JSON
-    const res = await axios.get(url);
     
-    // Devolución de la respuesta en formato JSON
-    return NextResponse.json(res.data);
-
-  } catch ( error ) {
+    // URL de la API de OpenWeatherMap para obtener los datos de los siguientes 5 días con pronostico de cada 3 horas
+    //* Para realizar prueba unitaria se deben sustituir los valores sin las llaves
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    
+    // Se utiliza la función fetch para realizar peticiones a la url, usando la opción para revalidar la petición cada hora o cada 3600 segundos
+    const res = await fetch(url, {
+      next: { revalidate: 3600 }
+    })
+    
+    return NextResponse.json(await res.json());
+  } catch (error) {
     console.log( "Error al obtener los datos de pronóstico del tiempo" );
 
     return new Response(JSON.stringify({ error: "Error al obtener los datos de pronóstico del tiempo" }), {
@@ -29,4 +29,4 @@ export async function GET(req: NextRequest) {
       headers: { 'Content-Type': 'application/json' },
     });
   }
-}
+} 

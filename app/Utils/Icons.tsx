@@ -50,7 +50,7 @@ export const cloudy = <Cloudy size={30} />
 export const sunset = <Sunset size={20} />
 export const wind = <Wind size={20} />
 export const cloudRainWind = <CloudRainWind size={20} />
-export const sun = <Sun size={20} />
+export const sun = <Sun />
 export const sunrise = <Sunrise size={20} />
 export const cloudLightning= <CloudLightningIcon size={20} />
 export const mist = <Waves size={20} />

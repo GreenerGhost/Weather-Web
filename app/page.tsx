@@ -3,6 +3,7 @@ import Temperature from "./Components/Temperature/Temperature";
 import AirPollution from "./Components/AirPollution/AirPollution";
 import Sunset from "./Components/Sunset/Sunset";
 import Wind from "./Components/Wind/Wind";
+import DailyForecast from "./Components/DailyForecast/DailyForecast";
 
 export default function Home() {
   return (
@@ -13,10 +14,11 @@ export default function Home() {
           <Temperature/>
         </div>
         <div className="flex flex-col w-full">
-          <div className="instruments grid h-full gap-4 col-span-full sm-2:col-span-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="instruments grid h-full gap-3 col-span-full sm-2:col-span-2 lg:grid-cols-3 xl:grid-cols-4">
             <AirPollution />
             <Sunset />
             <Wind />
+            <DailyForecast />
           </div>
         </div>
       </div>

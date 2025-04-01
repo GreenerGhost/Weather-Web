@@ -53,7 +53,7 @@ export default function Temperature() {
 
   // Si hay información se mostrarán los datos en pantalla transformados para poder visualizarlos
   return (
-    <div className='pt-5 pb-5 px-4 border rounded-lg flex flex-col justify-between dark:bg-dark-gray shadow-sm dark:shadow-none'>
+    <div className='pt-5 pb-5 px-4 w-full border rounded-lg flex flex-col justify-between dark:bg-dark-gray shadow-sm dark:shadow-none'>
       <p className="flex justify-between items-center">
         <span className="font-medium">{ currentDay }</span>
         <span className="font-medium">{ localTime }</span>

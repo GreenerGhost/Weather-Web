@@ -27,7 +27,7 @@ import {
   Moon,
   CloudMoon,
   CloudMoonRain,
-} from 'lucide-react'
+} from 'lucide-react';
 
 export const commandIcon = <Command size={14} />
 export const github = <Github size={20} />
@@ -58,3 +58,4 @@ export const haze = <Haze size={20} />
 export const moon = <Moon size={20} />
 export const cloudMoon = <CloudMoon size={20} />
 export const cloudMoonRain = <CloudMoonRain size={20} />
+

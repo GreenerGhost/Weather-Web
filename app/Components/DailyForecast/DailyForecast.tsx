@@ -6,17 +6,16 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel"
 import { Skeleton } from '@/components/ui/skeleton';
 import moment from 'moment';
 import React from 'react';
 
+
 export default function DailyForecast() {
 
+  // Se almacenan los datos que serán necesarios para poder mostrar la información de pronostico
   const { forecast, fifthDayForecast } = useGlobalContext();
-
   const { weather } = forecast;
   const { city, list } = fifthDayForecast;
 
@@ -26,62 +25,75 @@ export default function DailyForecast() {
       return <Skeleton className='h-[12rem] w-full col-span-2 md:col-span-full'/>;
     }
 
-  if (!forecast 
-    ||!weather
-  ) {
+  if ( !forecast || !weather ) {
     return <Skeleton className='h-[12rem] w-full'/>;
   }
 
-  // Se calcula el día actual y se compara con el día de la predicción para mostrar la información
+  // Se crea una variable para obtener el día actual con el cual se podrá filtrar la información y obtener los pronósticos del día cada 3 horas
   const today = new Date();
   const todayString = today.toISOString().split("T")[0];
 
-  const todaysForecast = list.filter( ( 
-    forecast: { dt_txt: string ; main: { temp: number } } ) => {
-    return forecast.dt_txt.startsWith(todayString)
-  });
+  // Se filtran todos los pronósticos del día actual, puesto que se obtienen los pronósticos de 5 días
+  const todaysForecast = list.filter(
+    (forecast: { dt_txt: string; }) => {
+      console.log(forecast.dt_txt);
+      
+      return forecast.dt_txt.startsWith(todayString);
+    }
+  );
+  
 
-  // Se obtiene información de la constante weather que es un arreglo, obteniendo el primer elemento
-  const { icon: weatherIcon } = weather[0];  
+  if ( todaysForecast.length < 1 ) {
+    return (
+      <Skeleton className='h-[12rem] w-full col-span-full sm-2:col-span-2 md:col-span-2 xl:col-span-2'/>
+    )
+  }
 
-  // se le añade una w al inicio del icono obtenido puesto que el código del icono obtenido inicia por un número, de esta forma evitamos fallas
-  const weatherCode = `w${weatherIcon}`;
+  const getIcon = ( weatherIcon: string ) => {
+    // se le añade una w al inicio del icono obtenido puesto que el código del icono obtenido inicia por un número, de esta forma evitamos fallas
+    return weatherConvert(`w${weatherIcon}`);
+  };
     
   return (
-    <div className='pt-5 px-4 h-[12rem] border rounded-lg flex flex-col gap-10 dark:bg-dark-gray shadow-sm dark:shadow-none col-span-full sm-2:col-span-2 md:col-span-2 xl:col-span-2'>
-      <div className='h-full flex gap-10 overflow-hidden'>
-      { todaysForecast.length < 1 ? 
-        <h1 className='text-[3rem] line-through text-rose-600'>No información disponible</h1> :
-        (
+    <div className='pt-4 px-4 h-[12rem] border rounded-lg flex flex-col gap-10 dark:bg-dark-gray shadow-sm dark:shadow-none col-span-full sm-2:col-span-2 md:col-span-2 xl:col-span-2'>
+      <div className="h-full flex gap-10 overflow-scroll">
+        {todaysForecast.length < 1 ? (
+          <div className='flex justify-center items-center'>
+            <h1 className='text-[3rem] line-through text-rose-600'>
+              No hay datos disponibles
+            </h1>
+          </div>
+        ) : (
           <div className='w-full'>
             <Carousel>
-              <CarouselPrevious />
               <CarouselContent>
-                { todaysForecast.map(
-                  (forecast: { dt_txt: string; main: { temp: number } } ) => {
+                {todaysForecast.map(
+                  (forecast: { dt_txt: string; main: { temp: number }; weather: { 0: { icon: string} } } ) => {
                     return (
-                      <CarouselItem 
+                      <CarouselItem
                         key={forecast.dt_txt}
-                        className='flex flex-col items-center gap-4 basis-[8.5rem] cursor-grab'
+                        className='flex flex-col w-full justify-between items-center gap-5 basis-[8.5rem] cursor-grab'
                       >
-                        <p className='dark:text-gray-100'>
-                          { moment(forecast.dt_txt).format("HH:mm") }
+                        <p className='font-medium black:text-gray-300'>
+                          {moment(forecast.dt_txt).format("HH:mm")}
                         </p>
-                        <span className='pt-2 scale-300'>{ weatherConvert(weatherCode) }</span>
+                        <p className='pt-2 scale-300'>{ getIcon( forecast.weather[0].icon ) }</p>
                         <p className='mt-6'>
-                          { kelvinToCelsius(forecast.main.temp) }°C
+                          {kelvinToCelsius(forecast.main.temp)}°C
                         </p>
                       </CarouselItem>
                     );
                   }
-                ) }
+                )}
               </CarouselContent>
-              <CarouselNext />
             </Carousel>
           </div>
-        )
-      }
+        )}
       </div>
     </div>
   )
 }
+function unixToDay(dt: number) {
+  throw new Error('Function not implemented.');
+}
+

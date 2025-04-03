@@ -10,6 +10,7 @@ import {
   CalendarDays,
   Eye,
   Droplets,
+  CircleAlert,
   CloudDrizzle,
   CloudRain,
   CloudRainWind,
@@ -21,6 +22,8 @@ import {
   Sunrise,
   Wind,
   Sun,
+  SunDim,
+  SunMedium,
   CloudLightningIcon,
   Haze,
   Waves,
@@ -39,23 +42,26 @@ export const thermometer = <Thermometer size={20} />
 export const eye = <Eye size={20} />
 export const people = <UsersRound size={20} />
 export const calender = <CalendarDays size={20} />
+export const alert = <CircleAlert size={20} />
 
-export const droplets = <Droplets size={20} />
-export const drizzle = <CloudDrizzle size={25} />
-export const rain = <CloudRain size={30} />
-export const snow = <CloudSnow size={30} />
-export const cloudSun = <CloudSun size={30} />
-export const cloud = <Cloud size={30} />
-export const cloudy = <Cloudy size={30} />
-export const sunset = <Sunset size={20} />
-export const wind = <Wind size={20} />
-export const cloudRainWind = <CloudRainWind size={20} />
+export const droplets = <Droplets />
+export const drizzle = <CloudDrizzle />
+export const rain = <CloudRain />
+export const snow = <CloudSnow />
+export const cloudSun = <CloudSun />
+export const cloud = <Cloud />
+export const cloudy = <Cloudy />
+export const sunset = <Sunset />
+export const wind = <Wind />
+export const cloudRainWind = <CloudRainWind />
+export const sunDim = <SunDim />
+export const sunMedium = <SunMedium />
 export const sun = <Sun />
-export const sunrise = <Sunrise size={20} />
-export const cloudLightning= <CloudLightningIcon size={20} />
-export const mist = <Waves size={20} />
-export const haze = <Haze size={20} />
-export const moon = <Moon size={20} />
-export const cloudMoon = <CloudMoon size={20} />
-export const cloudMoonRain = <CloudMoonRain size={20} />
+export const sunrise = <Sunrise />
+export const cloudLightning= <CloudLightningIcon />
+export const mist = <Waves />
+export const haze = <Haze />
+export const moon = <Moon />
+export const cloudMoon = <CloudMoon />
+export const cloudMoonRain = <CloudMoonRain />
 

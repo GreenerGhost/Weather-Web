@@ -13,6 +13,7 @@ export const GlobalContextProvider = ( { children } ) => {
   const [forecast, setForecast] = useState({});
   const [airQuality, setAirQuality] = useState({});
   const [fifthDayForecast, setFifthDayForecast] = useState({});
+  const [uvIndex, setUvIndex] = useState({});
 
   // Pronostico del clima
   const fetchForecast = async () => {
@@ -54,11 +55,26 @@ export const GlobalContextProvider = ( { children } ) => {
     }
   };
 
-  // Se llama a los métodos de fetchForecast y fetchAirQuality al iniciar la app
+  // Pronostico de radiación ultravioleta 
+  const fetchUvIndex = async () => {
+    try {
+      // permite hacer una petición al archivo route.ts si es exitosa se guarda en setUvIndex
+      const res = await axios.get("api/UVIndex");
+
+      // Se establece el valor de la radiación ultravioleta en el contexto global  de la app
+      setUvIndex(res.data);
+    } catch (error) {
+      // En caso de error se muestra el mensaje en consola  en caso contrario se muestra los datos obtenidos de la API
+      console.log("Error al obtener los datos de la radiación ultravioleta: ", error.message);
+    }
+  };
+
+  // Se llama a los métodos al iniciar la app
   useEffect(() => {
     fetchForecast();
     fetchAirQuality();
     fetchFifthDayForecast();
+    fetchUvIndex();
   }, []);
 
   return (
@@ -67,6 +83,7 @@ export const GlobalContextProvider = ( { children } ) => {
         forecast, 
         airQuality,
         fifthDayForecast,
+        uvIndex,
       }}
     >
       <GlobalContextUpdate.Provider value={{}}>

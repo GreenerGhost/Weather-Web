@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import axios from "axios";
-import { revalidatePath } from "next/cache";
 
 export async function GET(req: NextRequest) {
   try {
@@ -20,6 +18,7 @@ export async function GET(req: NextRequest) {
       next: { revalidate: 3600 }
     })
     
+    // Devolución de la respuesta en formato JSON
     return NextResponse.json(await res.json());
   } catch (error) {
     console.log( "Error al obtener los datos de pronóstico del tiempo" );

@@ -6,8 +6,8 @@ export async function GET(req: NextRequest) {
     const apiKey = process.env.OPENWEATHERMAP_API_KEY; 
     
     // Valores de prueba 
-    const lat = -33.3551;
-    const lon = -70.7443;
+    const lat = 19.4326
+    const lon = -99.1332
     
     // URL de la API de OpenWeatherMap para obtener los datos de los siguientes 5 días con pronostico de cada 3 horas
     //* Para realizar prueba unitaria se deben sustituir los valores sin las llaves

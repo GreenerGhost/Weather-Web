@@ -8,8 +8,8 @@ export async function GET(req: NextRequest) {
     const apiKey = process.env.OPENWEATHERMAP_API_KEY; 
 
     // Valores de prueba 
-    const lat = -33.3551;
-    const lon = -70.7443;
+    const lat = 19.4326
+    const lon = -99.1332
 
     // URL de la API de OpenWeatherMap para obtener los datos del clima
     //* Para realizar prueba unitaria se deben sustituir los valores sin las llaves, el dato "lang=es" regresa los valores de description en español, si no se utiliza se obtiene en inglés

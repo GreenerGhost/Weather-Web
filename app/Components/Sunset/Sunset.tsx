@@ -2,7 +2,6 @@
 
 import { useGlobalContext } from '@/app/Context/globalContext';
 import { unixToTime } from '@/app/Utils/convert';
-import { Progress } from '@/components/ui/progress';
 import { Skeleton } from '@/components/ui/skeleton';
 import React from 'react';
 import { sunset } from '@/app/Utils/Icons';

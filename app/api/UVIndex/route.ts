@@ -6,8 +6,8 @@ export async function GET(req: NextRequest) {
     // Para poder hacer uso de la siguiente API de https://open-meteo.com/ no es necesario contar con una API_KEY, se pueden realizar consultas con 
 
     // Valores de prueba 
-    const lat = -33.3551;
-    const lon = -70.7443;
+    const lat = 19.4326
+    const lon = -99.1332
 
     // URL de la API de Open-Meteo para obtener los valores de 
     //* Para realizar prueba unitaria se deben sustituir los valores sin las llaves

@@ -102,4 +102,17 @@ export const unixToTime = (unix: number, timezone: number) => {
     .unix(unix)
     .utcOffset(timezone / 60)
     .format("HH:mm");
-}
+};
+
+// Función que sirve para abreviar los datos de población, estos datos al ser tan grandes se harán lo suficientemente pequeños para poder mostrarlos en pantalla, con sus puntos de ruptura de billones, millones y miles
+export const formatNumber = (num: number) => {
+  if ( num >= 1000000000 ) {
+    return ( num / 1000000000 ).toFixed(1) + 'B';
+  } else if ( num >= 1000000 ) {
+    return ( num / 1000000).toFixed(1) + 'M';
+  } else if ( num >= 1000 ) {
+    return ( num / 1000 ).toFixed(1) + 'K';
+  } else {
+    return num;
+  }
+};

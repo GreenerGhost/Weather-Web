@@ -37,7 +37,7 @@ export default function FeelsLike() {
   }
 
   return (
-    <div className='py-5 px-4 h-[12rem] border rounded-lg flex flex-col gap-3 sm:gap-6 justify-between dark:bg-dark-gray shadow-sm dark:shadow-none'>
+    <div className='py-5 px-4 h-[12rem] border rounded-lg flex flex-col gap-3 justify-between dark:bg-dark-gray shadow-sm dark:shadow-none'>
       <h2 className='flex items-center gap-2 font-medium'>
       { thermometer } Sensación Térmica
       </h2>

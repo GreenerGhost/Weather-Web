@@ -71,7 +71,7 @@ export default function DailyForecast() {
             <Carousel>
               <CarouselContent>
                 { /* Se crean los items de la lista de pronósticos, con la función map se desplegarán todos los datos de interés */ }
-                {todaysForecast.map(
+                { todaysForecast.map(
                   (forecast: { dt_txt: string; main: { temp: number }; weather: { 0: { icon: string} } } ) => {
                     return (
                       <CarouselItem
@@ -88,7 +88,7 @@ export default function DailyForecast() {
                       </CarouselItem>
                     );
                   }
-                )}
+                ) }
               </CarouselContent>
             </Carousel>
           </div>

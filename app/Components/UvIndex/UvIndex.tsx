@@ -85,7 +85,7 @@ export default function UvIndex() {
           <UvProgress 
             value={marginLeftPercentage}
             max={14}
-            className='progress'
+            className='uv-progress'
           />
         </div>
       <p className='text-center text-sm'>{ uvIndexCategory( uvIndexMax ).description }</p>

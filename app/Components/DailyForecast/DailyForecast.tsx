@@ -19,6 +19,7 @@ export default function DailyForecast() {
   const { weather } = forecast;
   const { city, list } = fifthDayForecast;
 
+  // Se valida que la información principal se encuentre disponible
   if (!forecast 
     ||!city 
     ||!list) {
@@ -40,7 +41,6 @@ export default function DailyForecast() {
       return forecast.dt_txt.startsWith(todayString);
     }
   );
-  
 
   // Se verifica que se hayan pronósticos para el día actual
   if ( todaysForecast.length < 1 ) {
@@ -67,6 +67,7 @@ export default function DailyForecast() {
           </div>
         ) : (
           <div className='w-full'>
+            { /* //* Es importante mencionar que los datos en la API pueden variar, ya sea que no se encuentre información disponible, que solo aparezca un dato o los datos completos */ }
             <Carousel>
               <CarouselContent>
                 { /* Se crean los items de la lista de pronósticos, con la función map se desplegarán todos los datos de interés */ }

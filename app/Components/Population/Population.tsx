@@ -22,11 +22,9 @@ export default function Population() {
       <h2 className='flex items-center gap-2 font-medium'>
         { people } Población
       </h2>
-      <div className='top'>
-        <p className='text-4xl text-center'>
-          { formatNumber(city.population) }
-        </p>
-      </div>
+      <p className='text-4xl text-center'>
+        { formatNumber(city.population) }
+      </p>
       <p className='text-sm text-center'>Los valores de { city.name } pueden variar según la API.</p>
     </div>
   )

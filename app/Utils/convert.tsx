@@ -104,6 +104,11 @@ export const unixToTime = (unix: number, timezone: number) => {
     .format("HH:mm");
 };
 
+// Función que regresa las primeras tres letras de
+export const unixToDay = (unix: number) => {
+  return moment.unix(unix).format("dddd");
+};
+
 // Función que sirve para abreviar los datos de población, estos datos al ser tan grandes se harán lo suficientemente pequeños para poder mostrarlos en pantalla, con sus puntos de ruptura de billones, millones y miles
 export const formatNumber = (num: number) => {
   if ( num >= 1000000000 ) {

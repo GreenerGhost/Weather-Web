@@ -39,9 +39,9 @@ export default function Wind() {
             alt="compass"
             width={ 11 }
             height={ 11 }
-            className='absolute top-0 left-[45%] translate-x-[-50%]  transition-all duration-500 ease-in-out dark:invert'
+            className='absolute top-0 left-[50%] translate-x-[-50%]  transition-all duration-500 ease-in-out dark:invert'
             style={{
-              transform: `rotate(${windDirection}deg) translateX(50%)`,
+              transform: `rotate(${ windDirection }deg) translateX(0%) translateY(0%)`,
               height: "100%",
             }}
           />

@@ -32,17 +32,17 @@ import {
   CloudMoonRain,
 } from 'lucide-react';
 
-export const commandIcon = <Command size={14} />
-export const github = <Github size={20} />
+export const commandIcon = <Command />
+export const github = <Github />
 export const searchIcon = <Search />
-export const navigation = <Navigation size={15} />
-export const thermo = <ThermometerSun size={15} />
-export const gauge = <Gauge size={20} />
-export const thermometer = <Thermometer size={20} />
-export const eye = <Eye size={20} />
-export const people = <UsersRound size={20} />
-export const calender = <CalendarDays size={20} />
-export const alert = <CircleAlert size={20} />
+export const navigation = <Navigation size={16} />
+export const thermo = <ThermometerSun />
+export const gauge = <Gauge />
+export const thermometer = <Thermometer />
+export const eye = <Eye />
+export const people = <UsersRound />
+export const calender = <CalendarDays />
+export const alert = <CircleAlert />
 
 export const droplets = <Droplets />
 export const drizzle = <CloudDrizzle />

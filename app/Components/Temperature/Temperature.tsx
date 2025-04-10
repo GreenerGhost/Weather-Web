@@ -62,16 +62,16 @@ export default function Temperature() {
         <span>{ name }</span>
         <span>{ navigation }</span>
       </p>
-      <p className="py-10 text-9xl font-bold self-center">{ temp }°</p>
+      <p className="py-9 text-9xl font-bold self-center">{ temp }°C</p>
 
       <div>
         <div>
           <span>{ weatherConvert(weatherCode) }</span>
           <p className='pt-2 capitalize text-lg font-medium'>{ description }</p>
         </div>
-        <p className='flex items-center gap-2'>
-          <span>Min. Temp: { minTemp }°</span>
-          <span>Máx. Temp: { maxTemp }°</span>
+        <p className=' pt-2 flex items-center gap-2'>
+          <span>Min. Temp: { minTemp }°C</span>
+          <span>Máx. Temp: { maxTemp }°C</span>
         </p>
       </div>
     </div>

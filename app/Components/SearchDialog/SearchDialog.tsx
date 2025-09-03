@@ -4,6 +4,7 @@
 
 "use client";
 
+import { useGlobalContext } from '@/app/Context/globalContext';
 import { commandIcon } from '@/app/Utils/Icons';
 import { Button } from '@/components/ui/button';
 import { Command, CommandInput } from '@/components/ui/command'
@@ -11,6 +12,7 @@ import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import React from 'react'
 
 export default function SearchDialog() {
+  const { geoCodedList } = useGlobalContext();
   return (
     <div className='search-button'>
       { /* Esta sección será para poder realizar búsquedas en la API para posteriormente mostrar la información en pantalla */}
@@ -35,6 +37,18 @@ export default function SearchDialog() {
             { /* Se utilizará para desplegar una lista de posibles sugerencias de ciudades dadas por defecto */}
             <ul className="px-3 pb-2">
               <p className="p-2 text-sm text-muted-foreground">Sugerencias</p>
+              { geoCodedList.length === 0 && <p>Sin resultados</p> }
+
+              { geoCodedList.map((item: {
+                country: string;
+                state: string;
+                name: string;
+              }, index: number) => {
+                const { country, state, name } = item;
+                return <li key={ index } className='py-3 px-2 text-sm rounded-sm cursor-default hover:bg-accent'>
+                  <p className='text'>{ name }, {state}, { country }</p>
+                </li>
+              }) }
             </ul>
           </Command>
         </DialogContent>

@@ -1,7 +1,8 @@
 import type { Config } from "tailwindcss"
 
 const config = {
-  darkMode: ["class"],
+  // darkMode: ["class"], funciona para tailwind css v3.4.0, la forma a utilizar es la siguiente para versiones posteriores a v3.4.1
+  darkMode: ['class', '[data-theme="dark"]'] ,
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',

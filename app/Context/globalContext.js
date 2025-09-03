@@ -2,6 +2,7 @@
 
 import React, { useContext, createContext, useState, useEffect } from "react";
 import axios from "axios";
+import defaultStates from "../Utils/defaultStates";
 
 const GlobalContext = createContext();
 
@@ -14,6 +15,7 @@ export const GlobalContextProvider = ( { children } ) => {
   const [airQuality, setAirQuality] = useState({});
   const [fifthDayForecast, setFifthDayForecast] = useState({});
   const [uvIndex, setUvIndex] = useState({});
+  const [geoCodedList, setGeoCodedList] = useState(defaultStates);
 
   // Pronostico del clima
   const fetchForecast = async () => {
@@ -84,6 +86,7 @@ export const GlobalContextProvider = ( { children } ) => {
         airQuality,
         fifthDayForecast,
         uvIndex,
+        geoCodedList,
       }}
     >
       <GlobalContextUpdate.Provider value={{}}>

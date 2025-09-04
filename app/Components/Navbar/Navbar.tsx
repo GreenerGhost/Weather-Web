@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import ThemeDropdown from '../ThemeDropdown/ThemeDropdown';
-import SearchInput from '../SearchDialog/SearchDialog';
+import SearchDialog from '../SearchDialog/SearchDialog';
 import { useGlobalContext } from '@/app/Context/globalContext';
 
 export default function Navbar() {
@@ -21,7 +21,7 @@ export default function Navbar() {
       <div className="left"></div>
       <div className="search-container flex shrink-0 w-full gap-2 sm:w-fit">
 
-        <SearchInput/>
+        <SearchDialog/>
 
         <div className="button-group flex items-center gap-2">
           { /*Componente obtenido de ui.shadcn que permite seleccionar el tema claro u oscuro en la página*/ }

@@ -16,6 +16,7 @@ export const GlobalContextProvider = ( { children } ) => {
   const [fifthDayForecast, setFifthDayForecast] = useState({});
   const [uvIndex, setUvIndex] = useState({});
   const [geoCodedList, setGeoCodedList] = useState(defaultStates);
+  const [inputValue, setInputValue] = useState("");
 
   // Pronostico del clima
   const fetchForecast = async () => {
@@ -71,6 +72,18 @@ export const GlobalContextProvider = ( { children } ) => {
     }
   };
 
+  // Manejo de Entrada de datos
+  const handleInput = ( e ) => {
+    setInputValue( e.target.value );
+    console.log(typeof(e.target.value));
+    
+
+    // Si no introduce información en el recuadro de búsqueda se pondrán los datos de los estados por defecto
+    if( e.target.value === "" ) {
+      setGeoCodedList( defaultStates );
+    }
+  }
+
   // Se llama a los métodos al iniciar la app
   useEffect(() => {
     fetchForecast();
@@ -87,6 +100,8 @@ export const GlobalContextProvider = ( { children } ) => {
         fifthDayForecast,
         uvIndex,
         geoCodedList,
+        inputValue,
+        handleInput,
       }}
     >
       <GlobalContextUpdate.Provider value={{}}>

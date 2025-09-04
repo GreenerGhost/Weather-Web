@@ -23,7 +23,7 @@ export default function Humidity() {
       return "Seco: puede causar irritación en la piel"
     if ( humidity >= 30 && humidity < 50) 
       return "Cómodo: Ideal para salud y comodidad"
-    if ( humidity >= 50 && humidity < 70 )
+    if ( humidity >= 50 && humidity < 100 )
       return "Alto: Incomodo, riesgo de crecimiento de moho"
     return "Datos de humedad no disponibles"
   }

@@ -7,9 +7,10 @@ export async function GET(req: NextRequest) {
     // Obtener la API Key de OpenWeatherMap que se encuentra en el documento .env, también se puede sustituir por una apiKey personal
     const apiKey = process.env.OPENWEATHERMAP_API_KEY; 
 
-    // Valores de prueba 
-    const lat = 19.4326
-    const lon = -99.1332
+    // Se realiza una búsqueda de los parámetros dados
+    const searchParams = req.nextUrl.searchParams;
+    const lat = searchParams.get("lat");
+    const lon = searchParams.get("lon");
 
     // URL de la API de OpenWeatherMap para obtener los datos del clima
     //* Para realizar prueba unitaria se deben sustituir los valores sin las llaves, el dato "lang=es" regresa los valores de description en español, si no se utiliza se obtiene en inglés

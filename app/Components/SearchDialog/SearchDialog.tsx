@@ -4,15 +4,20 @@
 
 "use client";
 
-import { useGlobalContext } from '@/app/Context/globalContext';
+import { useGlobalContext, useGlobalContextUpdate } from '@/app/Context/globalContext';
 import { commandIcon } from '@/app/Utils/Icons';
 import { Button } from '@/components/ui/button';
 import { Command, CommandInput } from '@/components/ui/command'
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import React from 'react'
 
 export default function SearchDialog() {
   const { geoCodedList, inputValue, handleInput } = useGlobalContext();
+  const { setActiveCityCoords } = useGlobalContextUpdate();
+
+  const getClickedCoords = (lat: number, lon: number) => {
+    setActiveCityCoords( [ lat, lon ] );
+  };
   
   return (
     <div className='search-button'>
@@ -45,18 +50,30 @@ export default function SearchDialog() {
             <ul className="px-3 pb-2">
               <p className="p-2 text-sm text-muted-foreground">Sugerencias</p>
 
-              { geoCodedList.length === 0 && <p>Sin resultados</p> }
+              { (geoCodedList?.length === 0) && <p className="p-2 text-sm">Sin resultados</p> }
 
-              { geoCodedList.map((item: {
-                country: string;
-                state: string;
-                name: string;
-              }, index: number) => {
-                const { country, state, name } = item;
-                return <li key={ index } className='py-3 px-2 text-sm rounded-sm cursor-default hover:bg-accent'>
-                  <p className='text'>{ name }, { state }, { country }</p>
-                </li>
-              }) }
+              { geoCodedList && 
+                geoCodedList.map( ( item: {
+                  country: string;
+                  state: string;
+                  name: string;
+                  lat: number;
+                  lon: number;
+                }, index: number 
+                ) => {
+                  const { country, state, name } = item;
+                  return (
+                    <li 
+                      key={ index } 
+                      className='py-3 px-2 text-sm rounded-sm cursor-default hover:bg-accent'
+                      onClick={ () => {
+                        getClickedCoords( item.lat, item.lon );
+                      } }
+                    >
+                      <p className='text'>{ name }, { state }, { country }</p>
+                    </li> 
+                  );
+              } ) }
             </ul>
           </Command>
         </DialogContent>

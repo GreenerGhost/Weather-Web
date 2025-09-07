@@ -132,7 +132,13 @@
 
 /* Barra de progreso para indice Ultravioleta*/
 .uv-progress {
-  background: linear-gradient(90deg, rgba(30,227,65,1) 15%, rgba(255,254,0,1) 31%, rgba(217,152,26,1) 50%, rgba(255,0,0,1) 69%, rgba(127,32,236,1) 85%);
+  background: linear-gradient(
+    90deg, 
+    rgba(30,227,65,1) 15%, 
+    rgba(255,254,0,1) 31%, 
+    rgba(217,152,26,1) 50%, 
+    rgba(255,0,0,1) 69%, 
+    rgba(127,32,236,1) 85%);
 }
 
 /* Barra simulando la temperatura */
@@ -147,4 +153,40 @@
 
 footer:hover .footer-text > img {
   filter: grayscale(0%);
+}
+
+@media screen and ( max-width: 705px ) {
+  .button-group {
+    position: fixed;
+    bottom: 2%;
+    right: 1rem;
+    z-index: 1000;
+    
+    & button {
+      box-shadow: 2px 3px 0.3rem 0.3rem rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .search-container {
+    width: 100%;
+  }
+
+  .search-button {
+    width: 100%;
+
+    & button {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 1010px) {
+  .mapbox-container {
+    flex-direction: column;
+  }
+
+  .mapbox-container > div:first-child {
+    height: 24rem;
+    flex: initial;
+  }
 }
